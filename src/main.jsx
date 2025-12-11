@@ -8,6 +8,8 @@ import AddCoffee from "./Components/AddCoffee.jsx";
 import UpdateCoffee from "./Components/UpdateCoffee.jsx";
 import Layout from "./Components/Layout.jsx";
 import Error from "./Components/Error/Error.jsx";
+import SignIn from "./Components/SignIn/SignIn.jsx";
+import SignUp from "./Components/SignUp/SignUp.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <Error></Error>,
+      },
+      {
+        path: "/signIn",
+        element: <SignIn></SignIn>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
       },
     ],
   },

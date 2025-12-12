@@ -51,7 +51,7 @@ const Navbar = () => {
       </nav>
 
       <div>
-        <img src="" alt="img" />
+        <img src="halu" alt="img" />
       </div>
     </div>
   );

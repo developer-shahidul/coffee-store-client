@@ -10,6 +10,7 @@ import Layout from "./Components/Layout.jsx";
 import Error from "./Components/Error/Error.jsx";
 import SignIn from "./Components/SignIn/SignIn.jsx";
 import SignUp from "./Components/SignUp/SignUp.jsx";
+import AuthProvider from "./Providers/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

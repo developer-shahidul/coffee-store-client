@@ -8,12 +8,30 @@ const SignUp = () => {
 
   const handleSignUp = (event) => {
     event.preventDefault();
+    const name = event.target.name.value;
     const email = event.target.email.value;
-    const passwoard = event.target.password.value;
+    const password = event.target.password.value;
 
-    createUser(email, passwoard)
+    createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        console.log("user created at fb", result.user);
+        const createdAt = result?.user?.metadata?.creationTime;
+
+        const newUser = { name, email, createdAt };
+        // save newUser info to the database
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              console.log("user created to db", data);
+            }
+          });
       })
       .catch((err) => console.log(err, "Error"));
   };
@@ -33,6 +51,14 @@ const SignUp = () => {
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
               <form onSubmit={handleSignUp} className="fieldset">
+                <label className="label">Name</label>
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Full Name"
+                  autoComplete="name"
+                  name="name"
+                />
                 <label className="label">Email</label>
                 <input
                   type="email"

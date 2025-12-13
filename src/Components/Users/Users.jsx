@@ -55,6 +55,7 @@ const Users = () => {
               <th>Name</th>
               <th>Email</th>
               <th>CreatedAt</th>
+              <th>Last logIn</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -68,6 +69,7 @@ const Users = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.createdAt}</td>
+                <td>{user.lastSignInTime}</td>
                 <td className="flex gap-4">
                   <Link to={""}>
                     <div className="w-10 h-10  bg-[#3C393B] flex items-center justify-center rounded-[5px] cursor-pointer">

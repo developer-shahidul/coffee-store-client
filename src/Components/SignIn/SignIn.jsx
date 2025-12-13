@@ -3,6 +3,7 @@
 // import { useContext } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { data } from "react-router";
 
 const SignIn = () => {
   // sign in data niya ashlam
@@ -17,6 +18,22 @@ const SignIn = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
+
+        // last log in time update
+        const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+        const logInInfo = { email, lastSignInTime };
+
+        fetch("http://localhost:5000/users", {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(logInInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("sign In info updated in db", data);
+          });
       })
       .catch((err) => console.log(err));
   };

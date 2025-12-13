@@ -47,6 +47,14 @@ const Navbar = () => {
               Sign Up
             </Link>
           </li>
+          <li>
+            <Link
+              className="hover:underline  hover:decoration-gray-400   "
+              to={"/users"}
+            >
+              Users
+            </Link>
+          </li>
         </ul>
       </nav>
 

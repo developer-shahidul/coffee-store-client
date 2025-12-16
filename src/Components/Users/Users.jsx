@@ -23,12 +23,12 @@ const Users = () => {
       if (result.isConfirmed) {
         console.log("delete confirm");
 
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`coffee-management-server.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            console.log("deletedCount:", data.deletedCount);
             if (data.deletedCount) {
               Swal.fire({
                 title: "Deleted!",

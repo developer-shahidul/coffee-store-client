@@ -3,7 +3,6 @@
 // import { useContext } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { data } from "react-router";
 
 const SignIn = () => {
   // sign in data niya ashlam
@@ -23,10 +22,10 @@ const SignIn = () => {
         const lastSignInTime = result?.user?.metadata?.lastSignInTime;
         const logInInfo = { email, lastSignInTime };
 
-        fetch("http://localhost:5000/users", {
+        fetch("coffee-management-server.vercel.app/users", {
           method: "PATCH",
           headers: {
-            "content-type": "application/json",
+            "Content-type": "application/json",
           },
           body: JSON.stringify(logInInfo),
         })

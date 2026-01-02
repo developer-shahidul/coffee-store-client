@@ -1,4 +1,4 @@
-import { Children, StrictMode } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
@@ -23,8 +23,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <App></App>,
-        loader: () => fetch("coffee-store-server-rho-eight.vercel.app/coffee"),
+        element: <App />,
+        loader: async () => {
+          const res = await fetch(
+            "https://coffee-store-server-rho-eight.vercel.app/coffee"
+          );
+          if (!res.ok) {
+            throw new Response("Failed to load coffees", {
+              status: res.status,
+            });
+          }
+          return res.json(); // অবশ্যই res.json() — না করলে map error আসবে
+        },
       },
       {
         path: "/addCoffee",
@@ -32,9 +42,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateCoffee/:id",
-        element: <UpdateCoffee></UpdateCoffee>,
-        loader: ({ params }) =>
-          fetch(`coffee-store-server-rho-eight.vercel.app/coffee/${params.id}`),
+        element: <UpdateCoffee />,
+        loader: async ({ params }) => {
+          const res = await fetch(
+            `https://coffee-store-server-rho-eight.vercel.app/coffee/${params.id}`
+          );
+          if (!res.ok) {
+            throw new Response("Coffee not found", { status: 404 });
+          }
+          return res.json();
+        },
       },
 
       {
@@ -55,8 +72,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/users",
-        element: <Users></Users>,
-        loader: () => fetch("coffee-store-server-rho-eight.vercel.app/users"),
+        element: <Users />,
+        loader: async () => {
+          const res = await fetch(
+            "https://coffee-store-server-rho-eight.vercel.app/users"
+          );
+          if (!res.ok) {
+            throw new Response("Failed to load users", { status: res.status });
+          }
+          return res.json();
+        },
       },
       {
         path: "/users2",

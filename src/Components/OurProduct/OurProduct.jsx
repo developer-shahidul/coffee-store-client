@@ -22,7 +22,7 @@ const OurProduct = ({ coffeeData }) => {
           <h2 className="rancho text-[55px]  text-[#331A15] mb-4">
             Our Popular Products
           </h2>
-          <Link to="/coffee">
+          <Link to="/addCoffee">
             <button className="px-5.5 py-[9px] bg-[#F5F4F1] border-2 hover:bg-[#E3B577] inline-flex items-center gap-2.5 flex-row rounded-[5px]">
               <span className="rancho text-2xl text-white ">Add Coffee</span>
               <Coffee color="#000000" />

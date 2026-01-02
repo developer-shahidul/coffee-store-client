@@ -19,7 +19,7 @@ const SignUp = () => {
 
         const newUser = { name, email, createdAt };
         // save newUser info to the database
-        fetch("coffee-management-server.vercel.app/users", {
+        fetch("coffee-store-server-rho-eight.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-type": "application/json",

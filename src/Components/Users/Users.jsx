@@ -23,7 +23,7 @@ const Users = () => {
       if (result.isConfirmed) {
         console.log("delete confirm");
 
-        fetch(`coffee-management-server.vercel.app/users/${id}`, {
+        fetch(`coffee-store-server-rho-eight.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

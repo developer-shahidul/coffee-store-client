@@ -26,7 +26,7 @@ const Navbar = () => {
           <li>
             <Link
               className="hover:underline  hover:decoration-gray-400  "
-              to={"/coffee"}
+              to={"/addCoffee"}
             >
               AddCoffee
             </Link>

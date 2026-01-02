@@ -22,7 +22,7 @@ const SignIn = () => {
         const lastSignInTime = result?.user?.metadata?.lastSignInTime;
         const logInInfo = { email, lastSignInTime };
 
-        fetch("coffee-management-server.vercel.app/users", {
+        fetch("coffee-store-server-rho-eight.vercel.app/users", {
           method: "PATCH",
           headers: {
             "Content-type": "application/json",
